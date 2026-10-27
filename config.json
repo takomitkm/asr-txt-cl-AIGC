@@ -1,6 +1,7 @@
 {
   "threshold": 0.50,
   "score_margin": 0.10,
+  "device": 0,
   "hypothesis_template": "This note is a {}",
   "priority": ["疑问", "待办", "对话", "身体", "观点", "想法", "记录", "驳论"],
   "output_files": ["疑问.txt", "待办.txt", "对话.txt", "身体.txt", "观点.txt", "想法.txt", "记录.txt", "驳论.txt", "未分类.txt"],

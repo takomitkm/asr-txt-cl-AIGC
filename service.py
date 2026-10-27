@@ -106,11 +106,10 @@ def chunk_long_text(text: str, max_chars: int) -> List[str]:
         chunks.append(current)
     return chunks if chunks else [text]
 
-def load_classifier():
+def load_classifier(device: int = -1):
     from transformers import pipeline
     local_model = None
     model_dir_name = f"models--{MODEL_ID.replace('/', '--')}"
-    # Check both cache\hub\ and cache\ locations
     for base in (MODEL_CACHE_DIR / "hub" / model_dir_name, MODEL_CACHE_DIR / model_dir_name):
         snapshots_dir = base / "snapshots"
         if snapshots_dir.exists():
@@ -128,7 +127,7 @@ def load_classifier():
         "zero-shot-classification",
         model=str(local_model) if local_model else MODEL_ID,
         cache_dir=str(MODEL_CACHE_DIR),
-        device=DEVICE,
+        device=device,
     )
     log.info("模型加载成功")
     return classifier
@@ -155,7 +154,7 @@ def classify_paragraph(
             config["candidate_labels"],
             hypothesis_template=config["hypothesis_template"],
             multi_label=True,
-            device=DEVICE,
+            device=config.get("device", DEVICE),
         )
         for label, score in zip(result["labels"], result["scores"]):
             key = label_key_map.get(label)
@@ -453,10 +452,11 @@ def main():
     log.info("=" * 60)
 
     log.info("加载模型中...")
-    classifier = load_classifier()
     config = load_config()
     config["candidate_labels"] = build_candidate_labels(config)
     label_key_map = build_label_key_map(config)
+    device = config.get("device", DEVICE)
+    classifier = load_classifier(device)
     log.info(f"模型就绪，{len(config['subcategories'])} 个细分类别，开始监听队列...")
 
     last_activity = time.time()

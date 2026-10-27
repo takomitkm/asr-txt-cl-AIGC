@@ -1,6 +1,6 @@
-# 笔记分类器 (note-classifier)
+# 笔记分类器 (note-classifier) — GPU 分支
 
-基于 `MoritzLaurer/bge-m3-zeroshot-v2.0` 的本地零样本分类器。将中文笔记按文段拆分为 9 个类别，CPU 推理，无需 GPU。
+基于 `MoritzLaurer/bge-m3-zeroshot-v2.0` 的本地零样本分类器。**GPU 推理**（NVIDIA CUDA），将中文笔记按文段拆分为 9 个类别。
 
 ## 分类规则
 
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 ### 环境要求
 
 - Python 3.10+
-- CPU 即可（无 GPU 依赖）
+- **NVIDIA GPU + CUDA**（需 torch CUDA 版）
 - 约 2 GB 磁盘空间（模型 + 依赖）
 
 ## 使用
@@ -84,10 +84,10 @@ python client.py file1.txt file2.txt
 
 | 场景 | 耗时 |
 |------|------|
-| 冷启动（首次/超时后） | ~10 秒（含模型加载） |
-| 热运行（连续拖文件） | ~5-15 秒/段 |
+| 冷启动（首次/超时后） | ~10 秒（含模型加载到 GPU） |
+| 热运行（GPU 推理） | **~0.07 秒/段** |
 
-服务空闲 5 分钟后自动退出释放内存。
+服务空闲 5 分钟后自动退出释放显存。
 
 ## 服务管理
 
@@ -105,6 +105,7 @@ python service.py             # 手动启动
 {
   "threshold": 0.50,
   "score_margin": 0.10,
+  "device": 0,
   "hypothesis_template": "This note is a {}",
   "priority": ["疑问", "待办", "对话", "身体", "观点", "想法", "记录", "驳论"]
 }
@@ -116,7 +117,7 @@ python service.py             # 手动启动
 - Pipeline：`transformers.zero-shot-classification`
 - `multi_label=True`：各类别独立评分
 - `hypothesis_template`：`"This note is a {}"`
-- CPU 推理（device=-1）
+- **GPU 推理**（`config.json` 中 `device: 0`；CPU 设为 `-1`）
 - 长文段按句子边界分块后取平均
 - 支持 UTF-8 / GB18030 / GBK / Big5 编码自动检测
 - 文段分隔：连续两个及以上换行符
