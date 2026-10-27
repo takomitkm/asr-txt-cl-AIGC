@@ -1,0 +1,147 @@
+{
+  "threshold": 0.50,
+  "score_margin": 0.10,
+  "hypothesis_template": "This note is a {}",
+  "priority": ["疑问", "待办", "对话", "身体", "观点", "想法", "记录", "驳论"],
+  "output_files": ["疑问.txt", "待办.txt", "对话.txt", "身体.txt", "观点.txt", "想法.txt", "记录.txt", "驳论.txt", "未分类.txt"],
+  "subcategories": [
+    {
+      "id": "question_uncertainty",
+      "zh": "疑问",
+      "en": "A question or uncertainty seeking an answer or explanation.",
+      "output": "疑问.txt"
+    },
+    {
+      "id": "question_directed",
+      "zh": "提问",
+      "en": "A question explicitly addressed to another person or system to obtain information.",
+      "output": "疑问.txt"
+    },
+    {
+      "id": "need_lookup",
+      "zh": "待查询",
+      "en": "Information that needs to be looked up or searched for.",
+      "output": "疑问.txt"
+    },
+    {
+      "id": "need_check",
+      "zh": "待查",
+      "en": "An unresolved fact or detail that needs further checking or verification.",
+      "output": "疑问.txt"
+    },
+    {
+      "id": "todo_task",
+      "zh": "待办",
+      "en": "An outstanding task or action that still needs to be completed.",
+      "output": "待办.txt"
+    },
+    {
+      "id": "plan",
+      "zh": "计划",
+      "en": "A planned course of action or intended future arrangement.",
+      "output": "待办.txt"
+    },
+    {
+      "id": "assignment",
+      "zh": "任务",
+      "en": "A specific task, assignment, or piece of work to be carried out.",
+      "output": "待办.txt"
+    },
+    {
+      "id": "goal",
+      "zh": "目标",
+      "en": "A desired outcome, objective, or result that one intends to achieve.",
+      "output": "待办.txt"
+    },
+    {
+      "id": "dialogue",
+      "zh": "对话",
+      "en": "A dialogue, conversation, or exchange between two or more participants.",
+      "output": "对话.txt"
+    },
+    {
+      "id": "body",
+      "zh": "身体",
+      "en": "A note about one's body, physical sensations, posture, or general physical state.",
+      "output": "身体.txt"
+    },
+    {
+      "id": "health",
+      "zh": "健康",
+      "en": "A note about health, wellness, medical conditions, or health-related habits.",
+      "output": "身体.txt"
+    },
+    {
+      "id": "disease",
+      "zh": "疾病",
+      "en": "A note about illness, symptoms, diagnosis, or treatment of a disease.",
+      "output": "身体.txt"
+    },
+    {
+      "id": "exercise",
+      "zh": "锻炼",
+      "en": "A note about exercise, workouts, physical training, or fitness activities.",
+      "output": "身体.txt"
+    },
+    {
+      "id": "opinion",
+      "zh": "观点",
+      "en": "A personal view, judgment, evaluation, interpretation, or argument.",
+      "output": "观点.txt"
+    },
+    {
+      "id": "inspiration",
+      "zh": "灵感",
+      "en": "An inspiration or sudden insight that may lead to a new idea.",
+      "output": "想法.txt"
+    },
+    {
+      "id": "design",
+      "zh": "设计",
+      "en": "A design concept, architecture, or proposed arrangement of components.",
+      "output": "想法.txt"
+    },
+    {
+      "id": "idea_concept",
+      "zh": "点子",
+      "en": "A concrete idea, suggestion, or creative concept.",
+      "output": "想法.txt"
+    },
+    {
+      "id": "idea_thought",
+      "zh": "想法",
+      "en": "An idea, thought, possibility, or proposed approach.",
+      "output": "想法.txt"
+    },
+    {
+      "id": "diary",
+      "zh": "日记",
+      "en": "A personal diary entry describing experiences, feelings, or reflections.",
+      "output": "记录.txt"
+    },
+    {
+      "id": "food",
+      "zh": "美食",
+      "en": "A note about food, meals, dishes, eating experiences, or food preferences.",
+      "output": "记录.txt"
+    },
+    {
+      "id": "daily",
+      "zh": "日常",
+      "en": "A record of everyday events, routines, activities, or ordinary experiences.",
+      "output": "记录.txt"
+    },
+    {
+      "id": "reflection",
+      "zh": "反思",
+      "en": "A reflection, self-examination, or retrospective thought on past experiences or decisions.",
+      "output": "记录.txt"
+    },
+    {
+      "id": "rebuttal",
+      "zh": "驳论",
+      "en": "A rebuttal, counterargument, or reasoned challenge to a claim or position.",
+      "output": "驳论.txt"
+    }
+  ]
+}

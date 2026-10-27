@@ -1,0 +1,17 @@
+# Runtime artifacts
+cache/
+queue/
+results/
+service.lock
+service.log
+__pycache__/
+*.pyc
+
+# Python
+*.egg-info/
+.venv/
+venv/
+
+# OS
+Thumbs.db
+.DS_Store
