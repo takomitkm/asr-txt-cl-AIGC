@@ -1,5 +1,5 @@
 {
-  "threshold": 0.50,
+  "threshold": 0.40,
   "score_margin": 0.10,
   "device": 0,
   "hypothesis_template": "This note is a {}",
